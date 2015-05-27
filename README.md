@@ -25,14 +25,14 @@ ajax对象
    
 
 ##### 使用GET传输时：   
-`ajax.open("get","service.php?username=kefeng"+Math.random(), true);
+`ajax.open("get","service.php?username=kefeng"+Math.random(), true);   
  ajax.send(null);`    
 ##### 注意使用POST传输时一定要使用：`ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");`   
-`//post传输
-		ajax.open("post","service.php", true);
-		//设置头信息，指定编码方式
-		ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-		ajax.send("username=heyifeng&email=kefeng.hyf@gmail.com");`   
+`//post传输   
+ajax.open("post","service.php", true);   
+//设置头信息，指定编码方式   
+ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");   
+ajax.send("username=heyifeng&email=kefeng.hyf@gmail.com");`   
    
 ##### 效果图：   
 ![ajax](https://github.com/hyf93924/Ajax/blob/master/%E7%AC%AC%E4%BA%8C%E5%A4%A9/%E7%81%AB%E7%8B%90%E6%88%AA%E5%9B%BE_2015-05-27T04-24-20.643Z.png)   
