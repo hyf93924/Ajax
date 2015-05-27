@@ -1,0 +1,76 @@
+<script type="text/javascript">
+	function createAjax(){
+		var request = false;
+		//非IE, XMLHttpRequest
+		if(window.XMLHttpRequest){
+			request = new XMLHttpRequest();
+
+			if(request.overrideMimeType){
+				request.overrideMimeType("text/xml");
+			}
+
+
+		//IE, ActiveXObject
+		}else if(window.ActiveXObject){
+			var versions=['Microsoft.XMLHTTP','MSXML.XMLHTTP','Msxml2.XMLHTTP.7.0','Msxml2.XMLHTTP.6.0','Msxml2.XMLHTTP.5.0','Msxml2.XMLHTTP.4.0','MSXML2.XMLHTTP.3.0','MSXML2.XMLHTTP'];
+			//循环
+			for(var i=0; i<versions.length; i++){
+				try{
+					request = new ActiveXObject(versions[i]);
+
+					if(request){
+						return request;
+					}
+				}catch(e){
+					request=false;
+				}
+			}
+		}
+		return request;
+	}
+
+	//每次请求都用一个新的XMLHttpRequest
+	/*
+	使用post时一定要使用：
+	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	*/
+	var ajax = null;
+	function show(){
+		var helloobj = document.getElementById("hello");
+
+		ajax=createAjax();
+/*      //get传输
+		ajax.open("get","service.php?username=kefeng"+Math.random(), true);
+		ajax.send(null);   //发送参数
+		*/
+
+		ajax.onreadystatechange = function(){    //触发事件
+			if(ajax.readyState == 4){ //对象状态为4表示完成
+				if(ajax.status == 200){
+					/*
+					var data = ajax.responseText;
+					alert(data);
+					helloobj.innerHTML=data;
+					*/
+					var dom = ajax.responseXML;
+					var users = dom.getElementsByTagName("user");
+					alert(users.length);
+				}else{
+					alert("页面请求失败");
+				}
+			}
+		}
+
+		//post传输
+		ajax.open("post","users.xml", true);
+		//设置头信息，指定编码方式
+		ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		ajax.send("username=heyifeng&email=kefeng.hyf@gmail.com");
+	}
+	
+</script>
+
+<input type="button" onclick="show()" value="submit" /> 
+<div style="width: 500px;height: 200px;background: gray" id="hello">
+</div
+

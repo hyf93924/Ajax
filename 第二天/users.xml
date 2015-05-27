@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<users>
+	<user>
+		<name>kefeng</name>
+		<age>22</age>
+	</user>
+	<user>
+		<name>heyifeng</name>
+		<age>22</age>
+	</user>
+</users>
