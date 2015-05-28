@@ -1,0 +1,20 @@
+
+<script src="ajax.js"></script>
+<script>
+	function show(username){
+		if(username==""){
+			alert("用户名不能为空");
+			return;
+		}
+		var ajax = Ajax();
+		var userobj = document.getElementById("user");
+		ajax.post("username.php", {username:username}, function(data){
+			userobj.innerHTML=data;
+		});
+	}
+</script>
+
+<form action="reg.php" method="post">
+	username:<input type="text" onblur="show(this.value)" name="username"><span id="user"></span><br>
+	<input type="submit" value="submit" />
+</form>

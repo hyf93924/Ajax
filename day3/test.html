@@ -1,0 +1,21 @@
+<script src="ajax.js"></script>
+
+<script>
+	var ajax = Ajax();
+/*	//get方法传递参数
+	ajax.get("server.php?username=kefeng", function(data){
+		alert(data);
+	});
+*/
+	//post方法一
+	ajax.post("server.php", "username=kefeng", function(data){
+		alert(data);
+	});
+
+/*	//post用对象传递参数
+	ajax.post("server.php", {username:"kefeng", age:10, sex:"nan"}, function(data){
+		alert(data);
+	});
+*/
+
+</script>
